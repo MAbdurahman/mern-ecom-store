@@ -7,6 +7,27 @@
   --font-head: "Lora", serif;
   --font-body: 'Montserrat';
   --font-mono: 'Noro Sans Mono', monospace;
+
+  --color-semantic-a-400: hsl(0, 96%, 33%);
+  --color-semantic-a-300: hsl(0, 96%, 38%);
+  --color-semantic-a-200: hsl(0, 96%, 43%);
+  --color-semantic-a-100: hsl(0, 96%, 48%);
+
+  --color-semantic-i-400: hsl(215, 96%, 33%);
+  --color-semantic-i-300: hsl(215, 96%, 38%);
+  --color-semantic-i-200: hsl(215, 96%, 43%);
+  --color-semantic-i-100: hsl(215, 96%, 48%);
+
+  --color-semantic-s-400: hsl(100, 96%, 33%);
+  --color-semantic-s-300: hsl(100, 96%, 38%);
+  --color-semantic-s-200: hsl(100, 96%, 43%);
+  --color-semantic-s-100: hsl(100, 96%, 48%);
+
+  --color-semantic-w-400: hsl(48, 96%, 50%);
+  --color-semantic-w-300: hsl(48, 96%, 55%);
+  --color-semantic-w-200: hsl(48, 96%, 60%);
+  --color-semantic-w-100: hsl(48, 96%, 65%);
+
   --breakpoint-3xl: 1920px;
   --color-avocado-100: oklch(0.99 0 0);
   --color-avocado-200: oklch(0.98 0.04 113.22);
