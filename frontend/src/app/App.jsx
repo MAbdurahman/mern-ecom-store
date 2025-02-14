@@ -15,7 +15,8 @@ import UserAccount from '../pages/user/UserAccount.jsx';
 import UserPaypalReturn from '../pages/user/UserPaypalReturn.jsx';
 import UserPaymentSuccess from '../pages/user/UserPaymentSuccess.jsx';
 import UserProductSearch from '../pages/user/UserProductSearch.jsx';
-
+import NotFoundError from '../pages/error/NotFoundError.jsx';
+import UnauthorizedError from '../pages/error/UnauthorizedError.jsx';
 
 
 
@@ -44,6 +45,8 @@ export default function App() {
                <Route path='payment-success' element={<UserPaymentSuccess/>} />
                <Route path='search' element={<UserProductSearch/>} />
             </Route>
+            <Route path={'/unauthorized'} element={<UnauthorizedError/>} />
+            <Route path='*' element={<NotFoundError/>} />
 
          </Routes>
 
