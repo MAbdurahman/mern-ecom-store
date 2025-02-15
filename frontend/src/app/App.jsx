@@ -8,7 +8,7 @@ import AdminProducts from '../pages/admin/AdminProducts.jsx';
 import AdminOrders from '../pages/admin/AdminOrders.jsx';
 import AdminFeatures from '../pages/admin/AdminFeatures.jsx';
 import UserLayout from '../components/user/UserLayout.jsx';
-import UserHomePage from '../pages/user/UserHomePage.jsx';
+import UserHome from '../pages/user/UserHome.jsx';
 import UserProductsListing from '../pages/user/UserProductsListing.jsx';
 import UserCheckout from '../pages/user/UserCheckout.jsx';
 import UserAccount from '../pages/user/UserAccount.jsx';
@@ -50,7 +50,7 @@ export default function App() {
                <AccessValidator isAuthenticated={isAuthenticated} user={user}>
                   <UserLayout/>
                </AccessValidator>}>
-               <Route path="home" element={<UserHomePage/>}/>
+               <Route path="home" element={<UserHome/>}/>
                <Route path="listing" element={<UserProductsListing/>}/>
                <Route path="checkout" element={<UserCheckout/>}/>
                <Route path="account" element={<UserAccount/>}/>
