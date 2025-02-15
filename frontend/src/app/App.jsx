@@ -18,14 +18,13 @@ import UserProductSearch from '../pages/user/UserProductSearch.jsx';
 import NotFoundError from '../pages/error/NotFoundError.jsx';
 import UnauthorizedError from '../pages/error/UnauthorizedError.jsx';
 import AccessValidator from '../components/common/AccessValidator.jsx';
+import NoResultsError from '../pages/error/NoResultsError.jsx';
 
 
 export default function App() {
    const isAuthenticated = true;
-   const user = {
-      name: 'John Doe',
-      role: 'user'
-   };
+   const user = null;
+
 
    return (
       <div className="flex flex-col overflow-hidden bg-white">
@@ -60,6 +59,7 @@ export default function App() {
                <Route path="search" element={<UserProductSearch/>}/>
             </Route>
             <Route path={'/unauthorized'} element={<UnauthorizedError/>}/>
+            <Route path={'/no-results'} element={<NoResultsError/>}/>
             <Route path="*" element={<NotFoundError/>}/>
 
          </Routes>
