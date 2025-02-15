@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;1,500&family=Montserrat:ital@0;1&family=Noto+Sans+Mono:wght@100..900&display=swap');
+/*---break---*/
+@plugin 'tailwindcss-animate';
+/*---break---*/
+@custom-variant dark (&:is(.dark *));
 @import "tailwindcss";
 
 @theme {
@@ -48,7 +52,6 @@
   --color-semantic-w-200: hsl(48, 96%, 60%);
   --color-semantic-w-100: hsl(48, 96%, 65%);
 
-
   --ease-basic-01: cubic-bezier(0.26, 0.1, 0.27, 1.55);
   --ease-basic-02: cubic-bezier(0.17, 0.67, 0.83, 0.67);
   --ease: cubic-bezier(0.19, 0.08, 0.46, 0.99);
@@ -61,7 +64,6 @@
   --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
   --ease-snappy-01: cubic-bezier(0.5, 0, 0.4, 0.98);
   --ease-snappy-02: cubic-bezier(.17, .67, .83, .67);
-
 
   --radius-000: 1px;
   --radius-100: 2px;
@@ -77,18 +79,36 @@
   /*--animate-move-in-from-right: move-in-from-right 1s cubic-bezier(0.19, 0.08, 0.46, 0.99) 1;
   --animate-exit-to-left: exit-to-left 1s cubic-bezier(0.19, 0.08, 0.46, 0.99) 1 forwards;*/
 
-
-
-
-
-
-
-
   --breakpoint-3xl: 1920px;
   --color-avocado-100: oklch(0.99 0 0);
 }
 
 :root {
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(222.2 84% 4.9%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(222.2 84% 4.9%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(222.2 84% 4.9%);
+  --primary: hsl(222.2 47.4% 11.2%);
+  --primary-foreground: hsl(210 40% 98%);
+  --secondary: hsl(210 40% 96.1%);
+  --secondary-foreground: hsl(222.2 47.4% 11.2%);
+  --muted: hsl(210 40% 96.1%);
+  --muted-foreground: hsl(215.4 16.3% 46.9%);
+  --accent: hsl(210 40% 96.1%);
+  --accent-foreground: hsl(222.2 47.4% 11.2%);
+  --destructive: hsl(0 84.2% 60.2%);
+  --destructive-foreground: hsl(210 40% 98%);
+  --border: hsl(214.3 31.8% 91.4%);
+  --input: hsl(214.3 31.8% 91.4%);
+  --ring: hsl(222.2 84% 4.9%);
+  --chart-1: hsl(12 76% 61%);
+  --chart-2: hsl(173 58% 39%);
+  --chart-3: hsl(197 37% 24%);
+  --chart-4: hsl(43 74% 66%);
+  --chart-5: hsl(27 87% 67%);
+  --radius: 0.6rem;
 
 }
 
@@ -96,8 +116,6 @@ body {
   font-family: var(--font-body), sans-serif;
   font-weight: normal;
 }
-
-
 
 .move-in-from-right {
   animation-name: move-in-from-right;
@@ -141,5 +159,78 @@ body {
   }
   100% {
     transform: translateX(-2000px);
+  }
+}
+
+/*---break---*/
+
+.dark {
+  --background: hsl(222.2 84% 4.9%);
+  --foreground: hsl(210 40% 98%);
+  --card: hsl(222.2 84% 4.9%);
+  --card-foreground: hsl(210 40% 98%);
+  --popover: hsl(222.2 84% 4.9%);
+  --popover-foreground: hsl(210 40% 98%);
+  --primary: hsl(210 40% 98%);
+  --primary-foreground: hsl(222.2 47.4% 11.2%);
+  --secondary: hsl(217.2 32.6% 17.5%);
+  --secondary-foreground: hsl(210 40% 98%);
+  --muted: hsl(217.2 32.6% 17.5%);
+  --muted-foreground: hsl(215 20.2% 65.1%);
+  --accent: hsl(217.2 32.6% 17.5%);
+  --accent-foreground: hsl(210 40% 98%);
+  --destructive: hsl(0 62.8% 30.6%);
+  --destructive-foreground: hsl(210 40% 98%);
+  --border: hsl(217.2 32.6% 17.5%);
+  --input: hsl(217.2 32.6% 17.5%);
+  --ring: hsl(212.7 26.8% 83.9%);
+  --chart-1: hsl(220 70% 50%);
+  --chart-2: hsl(160 60% 45%);
+  --chart-3: hsl(30 80% 55%);
+  --chart-4: hsl(280 65% 60%);
+  --chart-5: hsl(340 75% 55%);
+}
+
+/*---break---*/
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/*---break---*/
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
