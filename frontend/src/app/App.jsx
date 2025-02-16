@@ -22,7 +22,7 @@ import NoResultsError from '../pages/error/NoResultsError.jsx';
 
 
 export default function App() {
-   const isAuthenticated = true;
+   const isAuthenticated = false;
    const user = null;
 
 

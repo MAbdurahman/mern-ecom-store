@@ -9,15 +9,11 @@ import {
    SelectTrigger,
    SelectValue,
 } from "../ui/select";
+import PasswordStrengthMeter from '@/components/common/PasswordStrengthMeter.jsx';
 
-export default function CommonForm({
-                                      formControls,
-                                      formData,
-                                      setFormData,
-                                      onSubmit,
-                                      buttonText,
-                                      isBtnDisabled
-                                   }) {
+export default function CommonForm({formControls, formData,
+                                      setFormData, onSubmit, buttonText, isBtnDisabled}) {
+
 
    function renderInputsByComponentType(getControlItem) {
       let element = null;
@@ -119,6 +115,7 @@ export default function CommonForm({
                </div>
             ))}
          </div>
+         <PasswordStrengthMeter password={formData.password} />
          <Button disabled={isBtnDisabled} type="submit" className="mt-2 w-full">
             {buttonText || 'Submit'}
          </Button>
