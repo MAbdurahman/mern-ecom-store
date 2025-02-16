@@ -19,7 +19,8 @@ export default function SignUp() {
    const {isValid, error} = validateUserInfo(userName, email, password);
 
 
-   function handleSubmit() {
+   function handleSubmit(e) {
+      e.preventDefault();
       console.log('Submit');
    }
 
@@ -36,6 +37,7 @@ export default function SignUp() {
             formData={formData}
             setFormData={setFormData}
             onSubmit={handleSubmit}
+            hasMeter={true}
          />
          <p className="mt-2 text-right">
             Already have an account?

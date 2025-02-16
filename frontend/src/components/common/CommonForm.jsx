@@ -12,7 +12,7 @@ import {
 import PasswordStrengthMeter from '@/components/common/PasswordStrengthMeter.jsx';
 
 export default function CommonForm({formControls, formData,
-                                      setFormData, onSubmit, buttonText, isBtnDisabled}) {
+                                      setFormData, onSubmit, buttonText, isBtnDisabled, hasMeter}) {
 
 
    function renderInputsByComponentType(getControlItem) {
@@ -107,7 +107,7 @@ export default function CommonForm({formControls, formData,
 
    return (
       <form onSubmit={onSubmit}>
-         <div className="flex flex-col gap-3">
+         <div className="flex flex-col gap-3 mb-4">
             {formControls.map((controlItem) => (
                <div className="grid w-full gap-1.5" key={controlItem.name}>
                   <Label className="mb-1">{controlItem.label}</Label>
@@ -115,8 +115,9 @@ export default function CommonForm({formControls, formData,
                </div>
             ))}
          </div>
-         <PasswordStrengthMeter password={formData.password} />
-         <Button disabled={isBtnDisabled} type="submit" className="mt-2 w-full">
+         {hasMeter && <PasswordStrengthMeter password={formData.password} />}
+
+         <Button disabled={isBtnDisabled} type="submit" className="w-full">
             {buttonText || 'Submit'}
          </Button>
       </form>
