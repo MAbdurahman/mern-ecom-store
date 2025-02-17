@@ -10,8 +10,8 @@ const userSchema = new Schema({
       type: String,
       trim: true,
       required: [true, 'First and last name are required!'],
-      minlength: [4, 'Name must be at least 4 characters!'],
-      maxLength: [32, 'Name cannot exceed 32 characters!'],
+      minlength: [4, 'UserName must be at least 4 characters!'],
+      maxLength: [32, 'UserName cannot exceed 32 characters!'],
       match: [name_pattern, 'Enter first and last name!'],
    },
    email: {
