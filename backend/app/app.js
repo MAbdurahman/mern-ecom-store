@@ -40,10 +40,14 @@ app.use(helmet());
 
 /************************* import all routes *************************/
 import homeRoute from '../routes/homeRoute.js';
+import authRoutes from '../routes/authRoutes.js';
+import userRoutes from '../routes/userRoutes.js';
+import commonRoutes from '../routes/commonRoutes.js';
 
 
 /****************************** routes ******************************/
 app.use('/api/v1.0/', homeRoute);
+app.use('/api/v1.0/auth', authRoutes);
 
 
 
