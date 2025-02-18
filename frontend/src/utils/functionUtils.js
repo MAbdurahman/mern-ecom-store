@@ -21,8 +21,8 @@ export function validateEmailPassword(email, password) {
    return {isValid: true};
 }
 
-export function validateUserInfo(username, email, password) {
-   let name_trimmed = username.trim();
+export function validateUserInfo(name, email, password) {
+   let name_trimmed = name.trim();
    let email_trimmed = email.trim();
    let password_trimmed = password.trim();
 

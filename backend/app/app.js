@@ -36,7 +36,7 @@ app.use(
 app.use(cookieParser());
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-app.use(helmet());
+/*app.use(helmet());*/
 
 /************************* import all routes *************************/
 import homeRoute from '../routes/homeRoute.js';

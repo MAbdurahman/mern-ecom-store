@@ -1,12 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import {signUpUser} from '@/store/auth-slice/index.js';
+import {useDispatch} from "react-redux";
 import CommonForm from '../../components/common/CommonForm.jsx';
 import {signUpFormControls} from '@/config/index.js';
 import useNotification from '@/hooks/useNotification.jsx';
 import {validateUserInfo} from '@/utils/functionUtils.js';
 
 const initialState = {
-   userName: "",
+   username: "",
    email: "",
    password: "",
 };
@@ -14,14 +16,39 @@ const initialState = {
 export default function SignUp() {
    const [formData, setFormData] = useState(initialState);
    const navigate = useNavigate();
+   const dispatch = useDispatch();
    const {updateNotification} = useNotification();
-   const { userName, email, password } = formData;
-   const {isValid, error} = validateUserInfo(userName, email, password);
+   const { username, email, password } = formData;
+   const {isValid, error} = validateUserInfo(username, email, password);
+   let timeOutId = null;
 
 
-   function handleSubmit(e) {
+  async function handleSubmit(e) {
       e.preventDefault();
-      console.log('Submit');
+
+      if (timeOutId) {
+         clearTimeout(timeOutId);
+      }
+      try {
+         if (!isValid) {
+            return updateNotification("error", error);
+
+         }
+         await updateNotification('success', 'Signed up successfully!');
+         dispatch(signUpUser(formData)).then((data) => {
+            if (data?.payload?.success) {
+
+            }
+         });
+
+         timeOutId =  setTimeout(() => {
+            navigate("/auth/sign-in");
+         }, 5000);
+
+      } catch(err) {
+         return updateNotification("error", err.message);
+
+      }
    }
 
    return (

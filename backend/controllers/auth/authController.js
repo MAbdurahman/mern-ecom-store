@@ -6,14 +6,14 @@ import {validateName, validateEmail, validatePassword} from '../../utils/functio
 import {generateTokenAndSetCookie} from '../../utils/generateTokenAndSetCookieUtils.js';
 
 export const signUp = async (req, res) => {
-   const { userName, email, password } = req.body;
+   const {username, email, password } = req.body;
 
    try {
 
-      if (!userName) {
-         return messageHandler(res, 'Username is required!', false, 400);
+      if (!username) {
+         return messageHandler(res, 'Full name is required!', false, 400);
       }
-      if (!validateName(userName)) {
+      if (!validateName(username)) {
          return messageHandler(res, 'Enter your first and last name!', false, 406);
       }
 
@@ -36,10 +36,10 @@ export const signUp = async (req, res) => {
          return messageHandler(res, 'Email already exists!', false, 400);
       }
 
-      const hashedPassword = await bcrypt.hash(password, process.env.SALT);
+      const hashedPassword = await bcrypt.hash(password, 10);
 
       const newUser = new User({
-         userName,
+         username,
          email,
          password: hashedPassword,
 
@@ -90,7 +90,7 @@ export const signIn = async (req, res) => {
          user: {
             _id: user._id,
             email: user.email,
-            userName: user.userName,
+            username: user.username,
             role: user.role
          }});
 

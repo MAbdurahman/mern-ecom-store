@@ -1,7 +1,7 @@
 
 export const signUpFormControls = [
    {
-      name: "fullName",
+      name: "username",
       label: "Full name",
       placeholder: "Enter full name",
       componentType: "input",
