@@ -2,11 +2,17 @@
 import bcrypt from 'bcryptjs';
 import User from '../../models/userModel.js';
 import {messageHandler} from '../../utils/messageHandlerUtils.js';
-import {validateName, validateEmail, validatePassword} from '../../utils/functionUtils.js';
-import {generateTokenAndSetCookie} from '../../utils/generateTokenAndSetCookieUtils.js';
+import {
+   validateName,
+   validateEmail,
+   validatePassword
+} from '../../utils/functionUtils.js';
+import {
+   generateTokenAndSetCookie
+} from '../../utils/generateTokenAndSetCookieUtils.js';
 
 export const signUp = async (req, res) => {
-   const {username, email, password } = req.body;
+   const {username, email, password} = req.body;
 
    try {
 
@@ -41,22 +47,22 @@ export const signUp = async (req, res) => {
       const newUser = new User({
          username,
          email,
-         password: hashedPassword,
+         password: hashedPassword
 
       });
 
       await newUser.save();
 
-     return messageHandler(res, 'Signed up successfully!', true, 201);
+      return messageHandler(res, 'Signed up successfully!', true, 201);
 
    } catch (err) {
-      console.error("Error signing up user: ", err.message);
+      console.error('Error signing up user: ', err.message);
       return messageHandler(res, err.message, false, 500);
    }
 };
 
 export const signIn = async (req, res) => {
-   const { email, password } = req.body;
+   const {email, password} = req.body;
 
    if (!email) {
       return messageHandler(res, 'Email is required!', false, 400);
@@ -86,23 +92,23 @@ export const signIn = async (req, res) => {
 
       res.status(200).send({
          message: 'Signed in successfully!',
-         token,
          user: {
             _id: user._id,
             email: user.email,
             username: user.username,
             role: user.role
-         }});
+         }
+      });
 
-   } catch(err) {
-      console.error("Error signing in user: ", err.message);
+   } catch (err) {
+      console.error('Error signing in user: ', err.message);
       return messageHandler(res, err.message, false, 500);
    }
 
 }
 
 export const signOut = async (req, res) => {
-   res.clearCookie("token");
+   res.clearCookie('token');
    return messageHandler(res, 'Signed out successfully!', true, 200);
 
 }

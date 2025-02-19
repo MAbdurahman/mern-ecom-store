@@ -162,6 +162,15 @@ body {
   }
 }
 
+.utils-center-text {
+  text-align: center;
+}
+
+.utils-notify {
+  min-width: 320px;
+  max-width: 320px;
+}
+
 /*---break---*/
 
 .dark {

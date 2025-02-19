@@ -27,15 +27,6 @@ export const signUpUser = createAsyncThunk(
 
 
 
-
-
-
-
-
-
-
-
-
 const authSlice = createSlice({
    name: 'auth',
    initialState,
