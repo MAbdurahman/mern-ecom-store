@@ -1,9 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from 'react-router-dom';
+import {useDispatch} from "react-redux";
 import CommonForm from '@/components/common/CommonForm.jsx';
 import {signInFormControls} from '@/config/index.js';
+import {signInUser, signUpUser} from '@/store/auth-slice/index.js';
 import useNotification from '@/hooks/useNotification.jsx';
 import {validateEmailPassword} from '@/utils/functionUtils.js';
+
 
 
 const initialState = {
@@ -13,13 +16,44 @@ const initialState = {
 
 export default function SignIn() {
    const [formData, setFormData] = useState(initialState);
+   const dispatch = useDispatch();
+   const navigate = useNavigate();
    const {updateNotification} = useNotification();
    const {email, password} = formData;
    const {isValid, error} = validateEmailPassword(email, password);
+   let timeOutId = null;
 
-   function handleSubmit(e) {
+   async function handleSubmit(e) {
       e.preventDefault();
-      console.log('handleSubmit');
+      if (timeOutId) {
+         clearTimeout(timeOutId);
+      }
+      try {
+
+         if (!isValid) {
+            return updateNotification('error', error);
+
+         }
+         dispatch(signInUser(formData)).then((data) => {
+            if (data?.payload?.success) {
+               console.log(data?.payload?.message);
+               updateNotification('success', data?.payload?.message);
+
+            } else {
+               return updateNotification('error', 'Invalid credentials!');
+
+            }
+
+            timeOutId = setTimeout(() => {
+               console.log('user signed in');
+            }, 5000);
+
+         });
+
+      } catch(err) {
+         return updateNotification('error', err.message);
+      }
+
    }
 
    return (

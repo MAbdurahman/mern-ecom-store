@@ -91,6 +91,7 @@ export const signIn = async (req, res) => {
       const token = generateTokenAndSetCookie(res, user._id);
 
       res.status(200).send({
+         success: true,
          message: 'Signed in successfully!',
          user: {
             _id: user._id,

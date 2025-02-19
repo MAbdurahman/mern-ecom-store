@@ -1,4 +1,6 @@
+import {useEffect} from 'react';
 import {Route, Routes} from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
 import AuthLayout from '../components/auth/AuthLayout.jsx';
 import SignIn from '../pages/auth/SignIn.jsx';
 import SignUp from '../pages/auth/SignUp.jsx';
@@ -22,8 +24,14 @@ import NoResultsError from '../pages/error/NoResultsError.jsx';
 
 
 export default function App() {
-   const isAuthenticated = false;
-   const user = null;
+   const { user, isAuthenticated, isLoading } = useSelector(
+      (state) => state.auth
+   );
+   const dispatch = useDispatch();
+
+   useEffect(() => {
+      console.log('useEffect');
+   }, [dispatch]);
 
 
    return (
