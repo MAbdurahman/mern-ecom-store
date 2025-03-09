@@ -11,6 +11,7 @@ export default function HomePage() {
         <!--favicon -->
         <link rel="icon" type="image/png"
               href="https://res.cloudinary.com/mdbdrrhm/image/upload/v1699189975/favicons/favicon_jouvmk.png"/>
+        <link rel="icon" type="image/png" href="./../../favicon.png"/>      
               
         <!--normalize styles -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
