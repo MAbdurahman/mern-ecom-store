@@ -9,8 +9,6 @@ export const connectCloudinary = async () => {
    });
 }
 
-
-console.log(cloudinary.config());
 const storage = new multer.memoryStorage();
 
 export async function handleUploadedImage(file) {
