@@ -208,6 +208,10 @@ body {
   line-height: 1.5;
 }
 
+select {
+  font-family: var(--font-mono), monospace;
+}
+
 .move-in-from-right {
   animation-name: move-in-from-right;
   animation-duration: 1s;

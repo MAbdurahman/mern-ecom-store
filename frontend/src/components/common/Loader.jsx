@@ -1,5 +1,5 @@
 import {Fragment} from 'react';
-import EclipseLoader from '@/assets/gifs/loader.gif';
+import EclipseLoader from '@/assets/gif/loader.gif';
 
 export default function Loader() {
 
