@@ -8,7 +8,7 @@ import {connectCloudinary} from './config/configCloudinary.js';
 /************************* handling Uncaught exceptions *************************/
 process.on('uncaughtException', err => {
    console.log(`ERROR: ${err.stack}`);
-   console.log('Shutting down the server due to Uncaught Exception!');
+   console.log('Shutting down the server due to Uncaught Exception!'.italic.red);
    process.exit(1);
 });
 
@@ -31,7 +31,7 @@ const server = app.listen(PORT, () => {
 /************************* handling unhandled promise rejection *************************/
 process.on('unhandledRejection', err => {
    console.log(`ERROR: ${err.stack}`);
-   console.log('Shutting down the server due to Unhandled Promise Rejection!');
+   console.log('Shutting down the server due to Unhandled Promise Rejection!'.italic.red);
    server.close(() => {
       process.exit(1);
    });
