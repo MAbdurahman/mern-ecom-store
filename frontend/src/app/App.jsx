@@ -21,24 +21,34 @@ import ShopperAccount from '@/pages/shopper/ShopperAccount.jsx';
 import ShopperPaypalReturn from '@/pages/shopper/ShopperPaypalReturn.jsx';
 import ShopperPaymentSuccess from '@/pages/shopper/ShopperPaymentSuccess.jsx';
 import ShopperProductSearch from '@/pages/shopper/ShopperProductSearch.jsx';
+import AuthValidator from '@/components/common/AuthValidator.jsx';
 
 export default function App() {
+
+   const isAuthenticated = true;
+   const user = {
+      username: 'John Doe',
+      email: 'johndoe@gmail.com',
+      role: 'admin'
+
+   };
 
    return (
       <div className="flex flex-col overflow-hidden bg-white">
 
          <Routes>
-            <Route path={'/auth'} element={<AuthLayout />}>
+            <Route path={'/'} element={<AuthValidator isAuthenticated={isAuthenticated} user={user} />} />
+            <Route path={'/auth'} element={<AuthValidator isAuthenticated={isAuthenticated} user={user}> <AuthLayout /> </AuthValidator>}>
                <Route path="sign-in" element={<SignIn/>}/>
                <Route path="sign-up" element={<SignUp/>}/>
             </Route>
-            <Route path={'/admin'} element={<AdminLayout />}>
+            <Route path={'/admin'} element={<AuthValidator isAuthenticated={isAuthenticated} user={user}> <AdminLayout /> </AuthValidator>}>
                <Route path="dashboard" element={<AdminDashboard/>}/>
                <Route path="products" element={<AdminProducts/>}/>
                <Route path="orders" element={<AdminOrders/>}/>
                <Route path="features" element={<AdminFeatures/>}/>
             </Route>
-            <Route path={'/shopper'} element={<ShopperLayout />}>
+            <Route path={'/shopper'} element={<AuthValidator isAuthenticated={isAuthenticated} user={user}> <ShopperLayout /> </AuthValidator>}>
                <Route path="home" element={<ShopperHome/>}/>
                <Route path="products" element={<ShopperProductsList/>}/>
                <Route path="checkout" element={<ShopperCheckout/>}/>

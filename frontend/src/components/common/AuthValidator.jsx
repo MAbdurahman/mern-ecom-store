@@ -2,7 +2,7 @@ import {Navigate, useLocation} from 'react-router-dom';
 import {Fragment} from 'react';
 
 
-export default function AccessValidator({isAuthenticated, user, children }) {
+export default function AuthValidator({isAuthenticated, user, children }) {
    const location = useLocation();
 
    // console.log(location.pathname, isAuthenticated);
@@ -14,7 +14,7 @@ export default function AccessValidator({isAuthenticated, user, children }) {
          if (user?.role === 'admin') {
             return <Navigate to='/admin/dashboard' />;
          } else {
-            return <Navigate to='/user/home' />;
+            return <Navigate to='/shopper/home' />;
          }
       }
    }
@@ -32,16 +32,16 @@ export default function AccessValidator({isAuthenticated, user, children }) {
          return <Navigate to='/admin/dashboard' />;
 
       } else {
-         return <Navigate to='/user/home' />;
+         return <Navigate to='/shopper/home' />;
 
       }
    }
 
    if (isAuthenticated && user?.role !== 'admin' && location.pathname.includes('admin')) {
-      return <Navigate to='/unauthorized' />;
+      return <Navigate to='/forbidden' />;
    }
 
-   if (isAuthenticated && user?.role === 'admin' && location.pathname.includes('user')) {
+   if (isAuthenticated && user?.role === 'admin' && location.pathname.includes('shopper')) {
       return <Navigate to='/admin/dashboard' />;
    }
 
