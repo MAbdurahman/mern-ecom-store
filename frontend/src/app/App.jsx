@@ -13,6 +13,14 @@ import AdminFeatures from '@/pages/admin/AdminFeatures.jsx';
 import AdminDashboard from '@/pages/admin/AdminDashboard.jsx';
 import AdminProducts from '@/pages/admin/AdminProducts.jsx';
 import AdminOrders from '@/pages/admin/AdminOrders.jsx';
+import ShopperLayout from '@/components/shopper/ShopperLayout.jsx';
+import ShopperHome from '@/pages/shopper/ShopperHome.jsx';
+import ShopperProductsList from '@/pages/shopper/ShopperProductsList.jsx';
+import ShopperCheckout from '@/pages/shopper/ShopperCheckout.jsx';
+import ShopperAccount from '@/pages/shopper/ShopperAccount.jsx';
+import ShopperPaypalReturn from '@/pages/shopper/ShopperPaypalReturn.jsx';
+import ShopperPaymentSuccess from '@/pages/shopper/ShopperPaymentSuccess.jsx';
+import ShopperProductSearch from '@/pages/shopper/ShopperProductSearch.jsx';
 
 export default function App() {
 
@@ -20,7 +28,7 @@ export default function App() {
       <div className="flex flex-col overflow-hidden bg-white">
 
          <Routes>
-            <Route path="/auth" element={<AuthLayout />}>
+            <Route path={'/auth'} element={<AuthLayout />}>
                <Route path="sign-in" element={<SignIn/>}/>
                <Route path="sign-up" element={<SignUp/>}/>
             </Route>
@@ -29,6 +37,15 @@ export default function App() {
                <Route path="products" element={<AdminProducts/>}/>
                <Route path="orders" element={<AdminOrders/>}/>
                <Route path="features" element={<AdminFeatures/>}/>
+            </Route>
+            <Route path={'/shopper'} element={<ShopperLayout />}>
+               <Route path="home" element={<ShopperHome/>}/>
+               <Route path="products" element={<ShopperProductsList/>}/>
+               <Route path="checkout" element={<ShopperCheckout/>}/>
+               <Route path="account" element={<ShopperAccount/>}/>
+               <Route path="paypal-return" element={<ShopperPaypalReturn/>}/>
+               <Route path="payment-success" element={<ShopperPaymentSuccess/>}/>
+               <Route path="search" element={<ShopperProductSearch/>}/>
             </Route>
             <Route path={'/unauthorized'} element={<UnauthorizedError/>}/>
             <Route path={'/no-results'} element={<NoResultsError/>}/>

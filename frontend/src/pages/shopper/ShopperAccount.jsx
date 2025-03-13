@@ -2,7 +2,7 @@ export default function ShopperAccount() {
 
    return (
       <div>
-         <h2>UserAccount</h2>
+         <h2>ShopperAccount</h2>
       </div>
 
    );
