@@ -1,4 +1,4 @@
-export default function UserPaypalReturn() {
+export default function ShopperPaypalReturn() {
 
    return (
       <div>

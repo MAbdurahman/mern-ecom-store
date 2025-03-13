@@ -60,7 +60,7 @@ export const signUpUser = async (req, res) => {
       return messageHandler(res, 'Signed up successfully!', true, 201);
 
    } catch (err) {
-      console.error('Error signing up user: ', err.message);
+      console.error('Error signing up shopper: ', err.message);
       return messageHandler(res, err.message, false, 500);
    }
 };
@@ -109,7 +109,7 @@ export const signInUser = async (req, res) => {
       });
 
    } catch (err) {
-      console.error('Error signing in user: ', err.message);
+      console.error('Error signing in shopper: ', err.message);
       return messageHandler(res, err.message, false, 500);
    }
 

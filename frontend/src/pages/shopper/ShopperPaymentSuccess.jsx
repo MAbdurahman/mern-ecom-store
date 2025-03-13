@@ -1,4 +1,4 @@
-export default function UserPaymentSuccess() {
+export default function ShopperPaymentSuccess() {
 
    return (
       <div>

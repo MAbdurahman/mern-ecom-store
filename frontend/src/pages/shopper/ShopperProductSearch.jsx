@@ -1,4 +1,4 @@
-export default function UserProductSearch() {
+export default function ShopperProductSearch() {
 
    return (
       <div>

@@ -1,4 +1,4 @@
-export default function UserCheckout() {
+export default function ShopperCheckout() {
 
    return (
       <div>

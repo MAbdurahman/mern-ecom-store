@@ -1,4 +1,4 @@
-export default function UserAccount() {
+export default function ShopperAccount() {
 
    return (
       <div>

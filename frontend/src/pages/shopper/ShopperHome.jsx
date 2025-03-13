@@ -1,4 +1,4 @@
-export default function UserHome() {
+export default function ShopperHome() {
 
    return (
       <div>
