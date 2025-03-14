@@ -25,11 +25,11 @@ import AuthValidator from '@/components/common/AuthValidator.jsx';
 
 export default function App() {
 
-   const isAuthenticated = true;
+   const isAuthenticated = false;
    const user = {
-      username: 'John Doe',
+      /*username: 'John Doe',
       email: 'johndoe@gmail.com',
-      role: 'admin'
+      role: 'admin'*/
 
    };
 
