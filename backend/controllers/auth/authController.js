@@ -144,15 +144,14 @@ export const signOutUser = async (req, res) => {
 }
 
 export const validateAccess = async (req, res) => {
-
    const user = req.user;
 
    if (!user) {
       return messageHandler(res, 'Access forbidden!', false, 406);
    }
    res.status(200).json({
-      success: true,
       message: 'User authenticated!',
+      success: true,
       user: user
    });
 

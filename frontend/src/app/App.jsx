@@ -23,6 +23,8 @@ import ShopperPaypalReturn from '@/pages/shopper/ShopperPaypalReturn.jsx';
 import ShopperPaymentSuccess from '@/pages/shopper/ShopperPaymentSuccess.jsx';
 import ShopperProductSearch from '@/pages/shopper/ShopperProductSearch.jsx';
 import AuthValidator from '@/components/common/AuthValidator.jsx';
+import {validateAccess} from '@/store/auth/authSlice.js';
+import Loader from '../components/common/Loader.jsx';
 
 export default function App() {
    const { user, isAuthenticated, isLoading } = useSelector(
@@ -30,6 +32,13 @@ export default function App() {
    );
    const dispatch = useDispatch();
 
+   useEffect(() => {
+      dispatch(validateAccess());
+   }, [dispatch]);
+
+   if (isLoading) {
+      return <Loader />;
+   }
 
    return (
       <div className="flex flex-col overflow-hidden bg-white">
