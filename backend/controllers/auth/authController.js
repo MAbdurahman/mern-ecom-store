@@ -43,7 +43,11 @@ export const signUpUser = async (req, res) => {
 
       const userAlreadyExists = await User.findOne({email});
       if (userAlreadyExists) {
-         return messageHandler(res, 'Email already exists!', false, 400);
+         return res.json({
+            message: 'Email already exists!',
+            success: false,
+            data: {}
+         });
       }
 
       const hashedPassword = await bcrypt.hash(password, 10);
@@ -90,12 +94,22 @@ export const signInUser = async (req, res) => {
    try {
       const user = await User.findOne({email});
       if (!user) {
-         return messageHandler(res, 'Invalid credentials!', false, 403);
+         return res.json({
+            message: 'User does not exist!',
+            success: false,
+            statusCode: 403,
+            data: {}
+         })
       }
 
       const validPassword = await bcrypt.compare(password, user.password);
       if (!validPassword) {
-         return messageHandler(res, 'Invalid credentials!', false, 406);
+         return res.json({
+            message: 'Invalid credentials!',
+            success: false,
+            statusCode: 406,
+            data: {}
+         })
       }
 
       const token = generateToken(res, user);

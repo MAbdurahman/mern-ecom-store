@@ -1,4 +1,5 @@
 import {useEffect} from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import {Route, Routes} from 'react-router-dom';
 import AuthLayout from '../components/auth/AuthLayout.jsx';
 import AdminLayout from '@/components/admin/AdminLayout.jsx';
@@ -24,14 +25,11 @@ import ShopperProductSearch from '@/pages/shopper/ShopperProductSearch.jsx';
 import AuthValidator from '@/components/common/AuthValidator.jsx';
 
 export default function App() {
+   const { user, isAuthenticated, isLoading } = useSelector(
+      (state) => state.auth
+   );
+   const dispatch = useDispatch();
 
-   const isAuthenticated = false;
-   const user = {
-      /*username: 'John Doe',
-      email: 'johndoe@gmail.com',
-      role: 'admin'*/
-
-   };
 
    return (
       <div className="flex flex-col overflow-hidden bg-white">

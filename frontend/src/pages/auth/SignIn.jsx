@@ -7,8 +7,6 @@ import {signInUser, signUpUser} from '@/store/auth/authSlice.js';
 import useNotification from '@/hooks/useNotification.jsx';
 import {validateEmailPassword} from '@/utils/functionUtils.js';
 
-
-
 const initialState = {
    email: "",
    password: "",
@@ -39,7 +37,7 @@ export default function SignIn() {
                updateNotification('success', data?.payload?.message);
 
             } else {
-               return updateNotification('error', 'Invalid credentials!');
+               return updateNotification('error', data?.payload?.message);
 
             }
 

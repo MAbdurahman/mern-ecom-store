@@ -36,11 +36,10 @@ export default function SignUp() {
 
          dispatch(signUpUser(formData)).then((data) => {
             if (data?.payload?.success) {
-               console.log(data?.payload?.message);
                updateNotification('success', data?.payload?.message);
 
             } else {
-               return updateNotification('error', 'Email already exists!');
+               return updateNotification('error', data?.payload?.message);
             }
 
             timeOutId = setTimeout(() => {
