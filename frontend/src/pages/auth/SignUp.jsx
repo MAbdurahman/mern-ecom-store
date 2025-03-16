@@ -22,7 +22,6 @@ export default function SignUp() {
    const {isValid, error} = validateUserInfo(username, email, password);
    let timeOutId = null;
 
-
    async function handleSubmit(e) {
       e.preventDefault();
 
@@ -39,7 +38,6 @@ export default function SignUp() {
             if (data?.payload?.success) {
                console.log(data?.payload?.message);
                updateNotification('success', data?.payload?.message);
-
 
             } else {
                return updateNotification('error', 'Email already exists!');

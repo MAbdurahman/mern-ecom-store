@@ -27,14 +27,14 @@ export const signInFormControls = [
    {
       name: "email",
       label: "Email",
-      placeholder: "Enter email",
+      placeholder: "example@email.com",
       componentType: "input",
       type: "text",
    },
    {
       name: "password",
       label: "Password",
-      placeholder: "Enter password",
+      placeholder: "Your password",
       componentType: "input",
       type: "password",
    },

@@ -20,11 +20,11 @@ export const signUpUser = async (req, res) => {
       if (!username) {
          return messageHandler(res, 'Full name is required!', false, 400);
       }
+      if (username.length > 33) {
+         return messageHandler(res, 'Full name cannot exceed 32 characters!', false, 406);
+      }
       if (!validateName(username)) {
          return messageHandler(res, 'Enter your first and last name!', false, 406);
-      }
-      if (username.length > 32) {
-         return messageHandler(res, 'Full name cannot exceed 32 characters!', false, 406);
       }
 
       if (!email) {
@@ -57,7 +57,13 @@ export const signUpUser = async (req, res) => {
 
       await newUser.save();
 
-      return messageHandler(res, 'Signed up successfully!', true, 201);
+      const saveUser = {
+         email,
+         username
+      }
+
+
+      messageHandler(res, 'Signed up successfully!', true, 201, saveUser);
 
    } catch (err) {
       console.error('Error signing up shopper: ', err.message);
@@ -98,8 +104,8 @@ export const signInUser = async (req, res) => {
          httpOnly: true,
          secure: process.env.NODE_ENV === 'production'
       }).status(200).json({
-         success: true,
          message: 'Signed in successfully!',
+         success: true,
          user: {
             email: user.email,
             role: user.role,

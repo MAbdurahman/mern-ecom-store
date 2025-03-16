@@ -203,6 +203,7 @@
 }
 
 body {
+  overflow: hidden;
   font-family: var(--font-body), sans-serif;
   font-weight: normal;
   line-height: 1.5;
@@ -210,6 +211,9 @@ body {
 
 select {
   font-family: var(--font-mono), monospace;
+}
+input {
+  border-color: var(--color-neutral-700);
 }
 
 .move-in-from-right {

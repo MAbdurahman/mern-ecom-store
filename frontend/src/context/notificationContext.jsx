@@ -51,7 +51,7 @@ export default function NotificationProvider({ children }) {
    return (
       <NotificationContext.Provider value={{updateNotification}}>
          {children}
-         {notification && (<div className="absolute left-1/2 -translate-x-1/2 top-72 ">
+         {notification && (<div className="absolute left-1/2 -translate-x-1/2 top-80">
             <div
                className={`${exitToLeft ? "exit-to-left" : "move-in-from-right"}` + " shadow-md shadow-gray-400 bg-semantic-a-400 rounded-md"}>
                <p className={classes + ' text-gray-50 px-4 py-4 font-body font-semibold utils-notify utils-center-text'}>
