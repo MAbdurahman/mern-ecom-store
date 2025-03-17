@@ -16,13 +16,9 @@ if (process.env.NODE_ENV !== 'production') {
 const app = express();
 colors.enabled = true;
 /************************* middlewares *************************/
-if (process.env.NODE_ENV === 'development') {
-   app.use(morgan('dev'));
-}
-app.use(helmet());
 app.use(
    cors({
-      origin: "http://localhost:5173",
+      origin: process.env.FRONTEND_URL,
       methods: ["GET", "POST", "DELETE", "PUT"],
       allowedHeaders: [
          "Content-Type",
@@ -34,6 +30,12 @@ app.use(
       credentials: true,
    })
 );
+if (process.env.NODE_ENV === 'development') {
+   app.use(morgan('dev'));
+}
+app.use(helmet({
+   crossOriginResourcePolicy: false
+}));
 app.use(cookieParser());
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded

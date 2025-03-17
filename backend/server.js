@@ -7,7 +7,7 @@ import {connectCloudinary} from './config/configCloudinary.js';
 
 /************************* handling Uncaught exceptions *************************/
 process.on('uncaughtException', err => {
-   console.log(`ERROR: ${err.stack}`);
+   console.log(`uncaughtException ERROR: ${err.stack}`.red);
    console.log('Shutting down the server due to Uncaught Exception!'.italic.red);
    process.exit(1);
 });
@@ -17,7 +17,7 @@ dotenv.config({path: 'backend/config/config.env'});
 colors.enabled = true;
 
 /************************* variables *************************/
-const PORT = process.env.PORT || 5000;
+const PORT = 5000 || process.env.PORT;
 const NODE_ENV = process.env.NODE_ENV;
 const API_URL = process.env.API_ENV || "/api/v1.0/";
 
@@ -30,7 +30,7 @@ const server = app.listen(PORT, () => {
 });
 /************************* handling unhandled promise rejection *************************/
 process.on('unhandledRejection', err => {
-   console.log(`ERROR: ${err.stack}`);
+   console.log(`unhandledRejection ERROR: ${err.stack}`.red);
    console.log('Shutting down the server due to Unhandled Promise Rejection!'.italic.red);
    server.close(() => {
       process.exit(1);
