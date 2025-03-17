@@ -6,7 +6,6 @@ import { AlignJustify, LogOut } from "lucide-react";
 export default function AdminHeader({setOpen}) {
    const dispatch = useDispatch();
 
-
    async function handleSignOut() {
       console.log('handleSignOut');
    }
@@ -25,7 +24,6 @@ export default function AdminHeader({setOpen}) {
                <LogOut />
                Sign Out
             </Button>
-
          </div>
       </header>
    );
