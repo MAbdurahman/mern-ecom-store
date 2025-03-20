@@ -4,7 +4,23 @@ import {messageHandler} from '../../utils/messageHandlerUtils.js';
 
 
 export const handleImageUploadedFile  = async (req, res) => {
-   console.log('handleImageUploadedFile');
+   try {
+      const b64 = Buffer.from(req.file.buffer).toString('base64');
+      const url = 'data:' + req.file.mimetype + ';base64,' + b64;
+      const result = await imageUploadedFile(url);
+
+      res.json({
+         message: 'Image uploaded successfully.',
+         success: true,
+         statusCode: 200,
+         result
+      });
+
+   } catch (err) {
+      console.error('Error in handleImageUploadedFile: ', err.message);
+      return messageHandler(res, 'handleImageUploadedFile Error: ' + err.message, false, 500);
+
+   }
 }
 
 
