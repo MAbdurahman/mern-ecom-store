@@ -26,7 +26,7 @@ export default function AdminProducts() {
    const [openCreateProductsDialog, setOpenCreateProductsDialog] = useState(false);
    const [formData, setFormData] = useState({});
    const [imageFile, setImageFile] = useState(null);
-   const [uploadedImageURL, setUploadedImageURL] = useState("");
+   const [uploadedImageURL, setUploadedImageURL] = useState('');
    const [imageLoadingState, setImageLoadingState] = useState(false);
    const [currentEditedId, setCurrentEditedId] = useState(null);
 
@@ -44,8 +44,10 @@ export default function AdminProducts() {
    }
 
    function handleIsFormValid() {
-      console.log('handleIsFormValid');
-      return true;
+      return Object.keys(formData)
+         .filter((currentKey) => currentKey !== "averageReview")
+         .map((key) => formData[key] !== "")
+         .every((item) => item);
    }
 
    return (
@@ -74,8 +76,8 @@ export default function AdminProducts() {
                <AdminProductImageUploader
                   imageFile={imageFile}
                   setImageFile={setImageFile}
-                  uploadedImageUrl={uploadedImageURL}
-                  setUploadedImageUrl={setUploadedImageURL}
+                  uploadedImageURL={uploadedImageURL}
+                  setUploadedImageURL={setUploadedImageURL}
                   setImageLoadingState={setImageLoadingState}
                   imageLoadingState={imageLoadingState}
                   isEditMode={currentEditedId !== null}

@@ -9,9 +9,9 @@ import { Skeleton } from "../ui/skeleton";
 export default function AdminProductImageUploader({  imageFile,
                                                      setImageFile,
                                                      imageLoadingState,
-                                                     uploadedImageUrl,
-                                                     setUploadedImageUrl,
                                                      setImageLoadingState,
+                                                     uploadedImageURL,
+                                                     setUploadedImageURL,
                                                      isEditMode,
                                                      isCustomStyling = false,}) {
 
@@ -57,7 +57,7 @@ export default function AdminProductImageUploader({  imageFile,
          );
          console.log(response.data.result.url);
          if (response?.data?.success) {
-            setUploadedImageUrl(response.data.result.url);
+            setUploadedImageURL(response.data.result.url);
             setImageLoadingState(false);
          }
 
@@ -109,7 +109,7 @@ export default function AdminProductImageUploader({  imageFile,
             ) : (
                <div className="flex items-center justify-between">
                   <div className="flex items-center">
-                     <FileIcon className="w-8 text-primary mr-2 h-8" />
+                     <FileIcon className="w-8 h-8 text-primary mr-2" />
                   </div>
                   <p className="text-sm font-medium">{imageFile.name}</p>
                   <Button
