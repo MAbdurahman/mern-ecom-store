@@ -11,11 +11,8 @@ export const connectCloudinary = async () => {
 
 const storage = new multer.memoryStorage();
 
-export async function handleUploadedImage(file) {
-
-   return await cloudinary.uploader.upload(file, {
-      resource_type: 'auto'
-   });
+export async function imageUploadedFile(file) {
+   return await cloudinary.uploader.upload(file, {resource_type: 'auto'});
 }
 
 export const upload = multer({ storage });
