@@ -44,8 +44,8 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 /************************* import all routes *************************/
 import homeRoute from '../routes/homeRoute.js';
 import authRoutes from '../routes/authRoutes.js';
-/*import adminProductRoutes from '../routes/admin/adminProductRoutes.js';
-import adminOrderRoutes from '../routes/admin/adminOrderRoutes.js';*/
+import adminProductRoutes from '../routes/admin/adminProductRoutes.js';
+import adminOrderRoutes from '../routes/admin/adminOrderRoutes.js';
 import userRoutes from '../routes/userRoutes.js';
 import commonRoutes from '../routes/commonRoutes.js';
 
@@ -54,8 +54,8 @@ import commonRoutes from '../routes/commonRoutes.js';
 app.use('/api/v1.0/', homeRoute);
 app.use('/api/v1.0/auth', authRoutes);
 
-/*app.use('/api/v1.0/admin/products', adminProductRoutes);
-app.use('/api/v1.0/admin/orders', adminOrderRoutes);*/
+app.use('/api/v1.0/admin/products', adminProductRoutes);
+app.use('/api/v1.0/admin/orders', adminOrderRoutes);
 
 
 
