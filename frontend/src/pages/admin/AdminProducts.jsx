@@ -1,25 +1,29 @@
-import { Fragment, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {Fragment, useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import useNotification from '@/hooks/useNotification.jsx';
-import CommonForm from "@/components/common/CommonForm.jsx";
-import { Button } from "@/components/ui/button";
-import {Sheet, SheetContent, SheetHeader, SheetTitle,} from "@/components/ui/sheet";
+import CommonForm from '@/components/common/CommonForm.jsx';
+import {Button} from '@/components/ui/button';
+import {Sheet, SheetContent, SheetHeader, SheetTitle} from '@/components/ui/sheet';
 import {addProductFormElements} from '@/config/index.js';
 import AdminProductImageUploader
    from '@/components/admin/AdminProductImageUploader.jsx';
-
-
+import {
+   addProduct,
+   updateProduct,
+   getAllProducts,
+   deleteProduct
+} from '@/store/admin/adminProductSlice.js';
 
 const initialFormData = {
-   image: "",
-   title: "",
-   description: "",
-   category: "",
-   brand: "",
-   price: "",
-   salePrice: "",
-   totalStock: "",
-   averageReview: 0,
+   title: '',
+   image: '',
+   description: '',
+   category: '',
+   brand: '',
+   price: '',
+   salePrice: '',
+   totalStock: '',
+   averageReview: 0
 };
 
 export default function AdminProducts() {
@@ -32,12 +36,14 @@ export default function AdminProducts() {
 
 
    const dispatch = useDispatch();
+   const { productList } = useSelector((state) => state.adminProduct);
    const {updateNotification} = useNotification();
 
    async function handleSubmit(event) {
       event.preventDefault();
       console.log('handleSubmit', event.target.event);
    }
+
    async function handleDeleteProduct(productId) {
       console.log('handleDeleteProduct', productId);
 
@@ -45,15 +51,23 @@ export default function AdminProducts() {
 
    function handleIsFormValid() {
       return Object.keys(formData)
-         .filter((currentKey) => currentKey !== "averageReview")
-         .map((key) => formData[key] !== "")
+         .filter((currentKey) => currentKey !== 'averageReview')
+         .map((key) => formData[key] !== '')
          .every((item) => item);
    }
+
+   useEffect(() => {
+      dispatch(getAllProducts());
+
+   }, [dispatch]);
+
+   console.log('productList', productList);
 
    return (
       <Fragment>
          <div className="mb-5 w-full font-semibold flex justify-end cursor-pointer">
-            <Button className="cursor-pointer" onClick={() => setOpenCreateProductsDialog(true)}>
+            <Button className="cursor-pointer"
+                    onClick={() => setOpenCreateProductsDialog(true)}>
                Add Product
             </Button>
          </div>
@@ -70,7 +84,7 @@ export default function AdminProducts() {
             <SheetContent side="right" className="overflow-auto">
                <SheetHeader className="p-4 pl-2">
                   <SheetTitle className="text-xl font-semibold text-gray-900">
-                     {currentEditedId !== null ? "Edit Product" : "Add Product"}
+                     {currentEditedId !== null ? 'Edit Product' : 'Add Product'}
                   </SheetTitle>
                </SheetHeader>
                <AdminProductImageUploader
@@ -87,7 +101,7 @@ export default function AdminProducts() {
                      onSubmit={handleSubmit}
                      formData={formData}
                      setFormData={setFormData}
-                     buttonText={currentEditedId !== null ? "Edit Product" : "Add Product"}
+                     buttonText={currentEditedId !== null ? 'Edit Product' : 'Add Product'}
                      formControls={addProductFormElements}
                      isBtnDisabled={!handleIsFormValid()}
                   />

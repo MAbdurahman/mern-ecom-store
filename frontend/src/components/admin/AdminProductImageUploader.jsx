@@ -52,10 +52,8 @@ export default function AdminProductImageUploader({  imageFile,
          data.append("my_file", imageFile);
          data.append('upload_preset', 'mern-ecom-store');
          const response = await axios.post(
-            "http://localhost:5000/api/v1.0/admin/products/upload-image",
-            data
-         );
-         console.log(response.data.result.url);
+            "http://localhost:5000/api/v1.0/admin/products/upload-image", data);
+
          if (response?.data?.success) {
             setUploadedImageURL(response.data.result.url);
             setImageLoadingState(false);
