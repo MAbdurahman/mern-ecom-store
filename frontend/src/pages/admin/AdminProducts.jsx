@@ -39,9 +39,23 @@ export default function AdminProducts() {
    const { productList } = useSelector((state) => state.adminProduct);
    const {updateNotification} = useNotification();
 
-   async function handleSubmit(event) {
-      event.preventDefault();
-      console.log('handleSubmit', event.target.event);
+   async function handleSubmit(e) {
+      e.preventDefault();
+      dispatch(addProduct({
+         ...formData,
+         image: uploadedImageURL,
+      })).then((data) => {
+         if (data?.payload?.success) {
+            dispatch(getAllProducts());
+            setOpenCreateProductsDialog(false);
+            setImageFile(null);
+            setFormData(initialFormData);
+            updateNotification('success', data?.payload?.message);
+
+         } else {
+            updateNotification('error', data?.payload?.message);
+         }
+      })
    }
 
    async function handleDeleteProduct(productId) {
