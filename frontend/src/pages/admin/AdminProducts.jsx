@@ -64,10 +64,11 @@ export default function AdminProducts() {
    }
 
    function handleIsFormValid() {
-      return Object.keys(formData)
+     /* return Object.keys(formData)
          .filter((currentKey) => currentKey !== 'averageReview')
          .map((key) => formData[key] !== '')
-         .every((item) => item);
+         .every((item) => item);*/
+      return true;
    }
 
    useEffect(() => {

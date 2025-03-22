@@ -64,19 +64,21 @@ export const addProduct = async (req, res) => {
 
 
       const newProduct = new Product(
-         title,
-         description,
-         category,
-         brand,
-         image,
-         price,
-         salePrice,
-         totalStock,
-         averageReview
+         {
+            title,
+            description,
+            category,
+            brand,
+            image,
+            price,
+            salePrice,
+            totalStock,
+            averageReview
+         }
       )
 
       await newProduct.save();
-      // messageHandler(res, 'Product successfully created!', true, 201, newProduct);
+
       res.status(201).json({
          message: 'Product successfully created!',
          success: true,
@@ -93,9 +95,6 @@ export const getAllProducts = async (req, res) => {
    try {
       const allProducts = await Product.find({});
 
-      // if (allProducts) {
-      //    messageHandler(res,'Successfully retrieved all products!', true, 200, allProducts);
-      // }
       res.status(200).json({
          message: 'Successfully retrieved all products!',
          success: true,
@@ -141,7 +140,7 @@ export const updateProduct = async (req, res) => {
       await foundProduct.save();
       // messageHandler(res, 'Product successfully updated!', true, 200, foundProduct,);
       res.status(200).json({
-         message: 'Successfully updated!',
+         message: 'Product successfully updated!',
          success: true,
          data: foundProduct
       })
@@ -160,7 +159,7 @@ export const deleteProduct = async (req, res) => {
       if (!productToDelete) {
          return messageHandler(res, 'Product not found!', false, 404);
       }
-      messageHandler(res, 'Product successfully deleted!', true, 200);
+     return  messageHandler(res, 'Product successfully deleted!', true, 200);
 
    } catch(err) {
       console.error('Error deleting a product: ', err.message);
